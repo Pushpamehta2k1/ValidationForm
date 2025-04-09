@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        form {
+            background-color: white;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function validateForm() {
+            var a = document.getElementById("i1").value;
+            var b = document.getElementById("i2").value;
+            var c = document.getElementById("i3").value;
+            var d = document.getElementById("i4").value;
+
+            // Check if fields are empty
+            if (a === "" || b === "" || c === "" || d === "") {
+                alert("All fields are mandatory");
+                return false;
+            }
+            
+            // Validate Contact (10-digit number)
+            if (b.length !== 10 || isNaN(b)) {
+                alert("Contact number must be exactly 10 digits and only contain numbers");
+                return false;
+            }
+
+            // Validate Password
+            if (c !== d) {
+                alert("Passwords do not match");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+    <form onsubmit="return validateForm()" action="abc7.html">
+        <h2>Registration Form</h2>
+        <label>User ID:</label>
+        <input type="text" id="i1" placeholder="Enter User ID">
+        
+        <label>Contact:</label>
+        <input type="text" id="i2" placeholder="Enter 10-digit Contact Number">
+        
+        <label>Password:</label>
+        <input type="password" id="i3" placeholder="Enter Password">
+        
+        <label>Confirm Password:</label>
+        <input type="password" id="i4" placeholder="Confirm Password">
+        
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
